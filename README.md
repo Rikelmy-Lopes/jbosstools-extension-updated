@@ -25,11 +25,33 @@ This project builds upon the original work of Red Hat and aims to extend compati
 
 ## Adding Missing Dependencies
 
-The following command was used to publish the missing dependencies into the extension's `.zip` repository:
+The following command was used to publish the missing dependencies into the extension's `.zip` repository.
+
+### Prerequisites
+
+- An installed Eclipse IDE compatible with the target environment.
+- The missing dependency files in a local directory.
+- A writable directory containing the JBoss Tools extension repository.
+
+### Configuration
+
+Before executing the command, replace the example paths with the actual paths on your computer:
+
+- **Eclipse installation:** Run `eclipse.exe` from your Eclipse IDE installation directory, or specify its full path.
+- **Metadata and artifact repositories:** Replace `C:/jbosstools_extension` with the actual path to your JBoss Tools extension repository.
+- **Missing dependencies:** Replace `C:/new_dependencies` with the actual path to the directory containing the missing dependency files.
+
+### Command
+
+Run the following command in Command Prompt, adjusting the paths as needed:
 
 ```bash
-eclipse.exe -nosplash -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher -metadataRepository file:/C:/jbosstools_extension -artifactRepository file:/C:/jbosstools_extension -source C:/new_dependencies -publishArtifacts -append -configs ANY -consoleLog
+"C:/path/to/eclipse/eclipse.exe" -nosplash -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher -metadataRepository file:/C:/jbosstools_extension -artifactRepository file:/C:/jbosstools_extension -source C:/new_dependencies -publishArtifacts -append -configs ANY -consoleLog
 ```
+
+**Important:** All paths above are examples. Update them to match your local environment before executing the command. The Eclipse executable must point to the intended Eclipse installation, and the repository and dependency paths must point to the correct local directories.
+
+The `-append` option allows the publisher to add the published artifacts to an existing repository rather than replacing its contents.
 
 ## Credits
 
